@@ -14,13 +14,17 @@ const transporter = nodeMailer.createTransport({
 
 // Sending welcome email
 export const sendWelcomeMail = async(email) => {
-    const mailOptions = {
-        from:  '"NodeJS Authenticator" 👻" <maverick42@ethereal.email>', // Sender email address
-        to: email,                // Recipient email address
-        subject: 'Welcome to Our Site',
-        text: 'Thank you for signing up! We are excited to have you as a member of our community.'
-    };
-    sendMail(mailOptions)
+    try {
+        const mailOptions = {
+            from:  '"NodeJS Authenticator" 👻" <maverick42@ethereal.email>', // Sender email address
+            to: email,                // Recipient email address
+            subject: 'Welcome to Our Site',
+            text: 'Thank you for signing up! We are excited to have you as a member of our community.'
+        };
+        sendMail(mailOptions)
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 // Sending signin alert
@@ -53,7 +57,7 @@ export const passwordChangeMail = async(email) => {
         subject: 'Password change alert',
         text: `Your account password has been changed`
     }
-    sendMail(mailOptions)
+    await sendMail(mailOptions)
 }
 
 // Send mail function

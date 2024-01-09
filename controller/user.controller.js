@@ -230,5 +230,9 @@ export const googleSignIn = async(req, res) => {
 }
 
 export const getErrorPage = async(req, res) => {
-    res.render('error')
+    try {
+        res.render('error')
+    } catch (error) {
+        res.render('error')
+    }
 }
