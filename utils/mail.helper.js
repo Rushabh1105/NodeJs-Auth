@@ -29,35 +29,47 @@ export const sendWelcomeMail = async(email) => {
 
 // Sending signin alert
 export const sendSignInAlert = async(email) => {
-    const mailOptions = {
-        from: '"NodeJS Authenticator" 👻" <maverick42@ethereal.email>', // Sender email address
-        to: email,      // Replace with the admin or alert recipient email address
-        subject: 'Signin Alert',
-        text: `User with email ${email} has signed in.`
-    };
-    sendMail(mailOptions);
+    try {
+        const mailOptions = {
+            from: '"NodeJS Authenticator" 👻" <maverick42@ethereal.email>', // Sender email address
+            to: email,      // Replace with the admin or alert recipient email address
+            subject: 'Signin Alert',
+            text: `User with email ${email} has signed in.`
+        };
+        await sendMail(mailOptions);
+    } catch (error) {
+        console.log(error) 
+    }
 }
 
 // Sending password reset mail
 export const sendPasswordMail = async(email, password) => {
-    const mailOptions = {
-        from: '"NodeJS Authenticator" 👻" <maverick42@ethereal.email>', // Sender email address
-        to: email,      // Replace with the admin or alert recipient email address
-        subject: 'Account Recovery',
-        text: `Your new password is ${password}, do not share with anyone`
+    try {
+        const mailOptions = {
+            from: '"NodeJS Authenticator" 👻" <maverick42@ethereal.email>', // Sender email address
+            to: email,      // Replace with the admin or alert recipient email address
+            subject: 'Account Recovery',
+            text: `Your new password is ${password}, do not share with anyone`
+        }
+        await sendMail(mailOptions)
+    } catch (error) {
+        console.log(error);
     }
-    sendMail(mailOptions)
 }
 
 // sending notification about password reset
 export const passwordChangeMail = async(email) => {
-    const mailOptions = {
-        from: '"NodeJS Authenticator" 👻" <maverick42@ethereal.email>', // Sender email address
-        to: email,      // Replace with the admin or alert recipient email address
-        subject: 'Password change alert',
-        text: `Your account password has been changed`
+    try {
+        const mailOptions = {
+            from: '"NodeJS Authenticator" 👻" <maverick42@ethereal.email>', // Sender email address
+            to: email,      // Replace with the admin or alert recipient email address
+            subject: 'Password change alert',
+            text: `Your account password has been changed`
+        }
+        await sendMail(mailOptions)
+    } catch (error) {
+        console.log(error)
     }
-    await sendMail(mailOptions)
 }
 
 // Send mail function
