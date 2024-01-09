@@ -1,7 +1,9 @@
+/* For Body */
 body{
     background-color: lightblue;
 }
 
+/* For login and signup container */
 .container{
     width: 400px;
     height: auto;
@@ -11,6 +13,7 @@ body{
     padding: 12px;
 }
 
+/* For google auth */
 .o-auth{
     width: auto;
     height: 40px;
@@ -27,3 +30,4 @@ body{
     text-decoration: none;
     color: white;
 }
+

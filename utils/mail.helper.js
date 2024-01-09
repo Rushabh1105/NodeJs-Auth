@@ -1,6 +1,8 @@
+// Importing required modules and dependencies
 import nodeMailer from "nodemailer";
 import { PASS, USER } from "../config/server.config.js";
 
+// Create mail transporter
 const transporter = nodeMailer.createTransport({
     host: 'smtp.ethereal.email',
     port: 587,
@@ -10,7 +12,7 @@ const transporter = nodeMailer.createTransport({
     }
 });
 
-
+// Sending welcome email
 export const sendWelcomeMail = async(email) => {
     const mailOptions = {
         from:  '"NodeJS Authenticator" 👻" <maverick42@ethereal.email>', // Sender email address
@@ -21,6 +23,7 @@ export const sendWelcomeMail = async(email) => {
     sendMail(mailOptions)
 }
 
+// Sending signin alert
 export const sendSignInAlert = async(email) => {
     const mailOptions = {
         from: '"NodeJS Authenticator" 👻" <maverick42@ethereal.email>', // Sender email address
@@ -31,6 +34,7 @@ export const sendSignInAlert = async(email) => {
     sendMail(mailOptions);
 }
 
+// Sending password reset mail
 export const sendPasswordMail = async(email, password) => {
     const mailOptions = {
         from: '"NodeJS Authenticator" 👻" <maverick42@ethereal.email>', // Sender email address
@@ -41,6 +45,7 @@ export const sendPasswordMail = async(email, password) => {
     sendMail(mailOptions)
 }
 
+// sending notification about password reset
 export const passwordChangeMail = async(email) => {
     const mailOptions = {
         from: '"NodeJS Authenticator" 👻" <maverick42@ethereal.email>', // Sender email address
@@ -51,6 +56,7 @@ export const passwordChangeMail = async(email) => {
     sendMail(mailOptions)
 }
 
+// Send mail function
 const sendMail = async(info) => {
     try {
         await transporter.sendMail(info);

@@ -1,8 +1,10 @@
+// Importing required modules and dependencies
 import { JWT_SECRET } from "../config/server.config.js";
 import UserModel from "../models/user.js"
 import bcrypt from 'bcrypt'
 import jwt from "jsonwebtoken";
 
+// Find user using email
 export const findUserByEmail = async (email) => {
     try {
         const user = await UserModel.findOne({email});
@@ -16,7 +18,7 @@ export const findUserByEmail = async (email) => {
     }
 }
 
-
+// Create a new User
 export const createUser = async (name, email, password) => {
     try {
         const hash = await bcrypt.hash(password, 5);
@@ -31,6 +33,7 @@ export const createUser = async (name, email, password) => {
     }
 }
 
+// Compare user password with hash password
 export const comparePassword = async (user, password) => {
     try {
         const compare = await bcrypt.compare(password, user.password);
@@ -44,6 +47,7 @@ export const comparePassword = async (user, password) => {
     }
 }
 
+// Create a JWT token
 export const createToken = async(user) => {
     try {
         const secret = JWT_SECRET;
@@ -54,6 +58,7 @@ export const createToken = async(user) => {
     }
 }
 
+// Update the user password
 export const updatePassword = async (user, password) => {
     try {
         const hash = await bcrypt.hash(password, 5);
@@ -67,6 +72,7 @@ export const updatePassword = async (user, password) => {
     }
 }
 
+// Generate random password
 export const generateRandomPassword = (length = 10) => {
     const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-+=";
     let password = "";
