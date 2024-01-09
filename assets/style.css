@@ -1,0 +1,29 @@
+body{
+    background-color: lightblue;
+}
+
+.container{
+    width: 400px;
+    height: auto;
+    background-color: blue;
+    color: white;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.o-auth{
+    width: auto;
+    height: 40px;
+    /* background-color: grey; */
+    align-items: center;
+    text-align: center;
+}
+
+.google{
+    padding: 5px;
+    background-color: grey;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}

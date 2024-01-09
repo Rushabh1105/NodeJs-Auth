@@ -1,0 +1,27 @@
+<div class="container">
+    <h1 class="mt-1 mb-4">Login</h1>
+    <hr>
+    <% if(success==false){ %>
+        <p class="bg-danger text-light"><%= error%></p>
+    <%}%>
+    <form action="/signin" method="post">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary mr-3">Login</button>
+        <a href="/forgot-password" style="color: red;">Forgot Password</a>
+    </form>
+
+    <hr>
+
+    <p>If You dont have an account <a href="/" style="color: red;">SignUp Here</a></p>
+    <hr>
+    <div class="o-auth">
+        <a href="/auth/google" class="google">SignIn With <i class="fa-brands fa-google"></i> </a>
+    </div>
+</div>
